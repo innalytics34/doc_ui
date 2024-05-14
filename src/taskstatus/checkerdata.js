@@ -292,7 +292,6 @@ function Checkerdata() {
           <Modal.Title>Preview</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        {renderPreview()}
         </Modal.Body>
       </Modal>
       {getmodel && <Checkermodel row={selectedRow}  onRefresh={handleRefresh}/>}

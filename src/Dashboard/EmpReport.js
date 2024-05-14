@@ -262,7 +262,6 @@ function EmpReport() {
           <Modal.Title>Preview</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        {renderPreview()}
         </Modal.Body>
       </Modal>
       {getmodel && <ReportModel row={selectedRow}  onRefresh={handleRefresh}/>}

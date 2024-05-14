@@ -293,7 +293,6 @@ function AdminReport() {
           <Modal.Title>Preview</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        {renderPreview()}
         </Modal.Body>
       </Modal>
       {getmodel && <AdminRpModel row={selectedRow}  onRefresh={handleRefresh}/>}
