@@ -29,7 +29,7 @@ const AdminRpModel = ({ row }) => {
         }
       }
       fetchTaskData();
-    }, []);
+    }, [row]);
 
   
   return (

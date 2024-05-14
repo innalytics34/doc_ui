@@ -30,7 +30,7 @@ const Checkermodel = ({ row, onRefresh }) => {
         }
       }
       fetchTaskData();
-    }, []);
+    }, [row]);
 
   const handleSubmit = async (e) => {
     try {

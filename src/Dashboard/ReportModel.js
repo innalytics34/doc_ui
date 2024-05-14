@@ -29,7 +29,7 @@ const ReportModel = ({ row}) => {
         }
       }
       fetchTaskData();
-    }, []);
+    }, [row]);
 
   // const handleSubmit = async (e) => {
   //   try {
