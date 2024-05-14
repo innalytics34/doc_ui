@@ -9,7 +9,7 @@ import Grid from "@mui/material/Grid";
 import {getFromAPI } from "../apiCall/ApiCall.js";
 import PdftoIMG from '../Dashboard/pdftoimg'
 
-const AdminRpModel = ({ row, onRefresh }) => {
+const AdminRpModel = ({ row }) => {
   const [showModal, setShowModal] = useState(true);
   const [previewFile, setPreviewFile] = useState(null);
   const handleCloseModal = () => setShowModal(false);
