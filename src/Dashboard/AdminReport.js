@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import {Modal} from "react-bootstrap";
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
-import ReportModel from '../Dashboard/ReportModel.js';
 import ExportExcel from '../Dashboard/ExportExcel.js';
 import AdminRpModel from '../Dashboard/AdminRpModel.js'
 import {
@@ -15,7 +14,6 @@ import {
   Select,
   Button,
 } from "@mui/material";
-import Cookies from "js-cookie";
 import {
   TableContainer,
   Table,
@@ -37,14 +35,11 @@ function AdminReport() {
   const [sortOrder, setSortOrder] = useState('asc');
   const [sortBy, setSortBy] = useState(null);
   const [showPreviewModal, setShowPreviewModal] = useState(false);
-  const [previewFile,  setPreviewFile] = useState(null);
   const [selectedEmployee, setSelectedEmployee] = useState(0);
   const [selectedStatus, setSelectedStatus] = useState(0);
   const [getmodel, setmodel] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
-  const [selectedHeader, setSelectedHeader] = useState(null);
-
-
+ 
 
     async function fetchTaskData() {
       try {
@@ -90,8 +85,8 @@ function AdminReport() {
 
   const sortedReports = [...getreports].sort((a, b) => {
     if (sortBy === null) return 0;
-    const aValue = String(a[sortBy]); // Convert to string
-    const bValue = String(b[sortBy]); // Convert to string
+    const aValue = String(a[sortBy]); 
+    const bValue = String(b[sortBy]); 
     if (sortOrder === 'asc') {
       return aValue.localeCompare(bValue);
     } else {
@@ -117,7 +112,6 @@ function AdminReport() {
 
   const handleDocumentClick = (row, header) => {
     setSelectedRow(row);
-    setSelectedHeader(header);
     if (getmodel) {
       setmodel(false);
     } else {
@@ -125,33 +119,7 @@ function AdminReport() {
     }
   };
 
-  const renderPreview = () => {
-    if (previewFile && previewFile.startsWith("data:image")) {
-      return (
-        <img
-          src={`${previewFile}`}
-          alt="Preview"
-          style={{ maxWidth: "100%", height: "auto" }}
-        />
-      );
-    } else if (previewFile && previewFile.startsWith("data:application/pdf")) {
-      return (
-        <iframe
-          src={`${previewFile}`}
-          type="application/pdf"
-          width="100%"
-          height="auto"
-          style={{ border: "none" }}
-          title="Preview PDF"
-        ></iframe>
-      );
-    } else {
-      return <p>No preview available</p>;
-    }
-  };
-
-
- 
+   
   return (
     <>
        <form onSubmit={handleSubmit}>

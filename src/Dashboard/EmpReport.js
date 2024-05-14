@@ -14,7 +14,6 @@ import {
   Select,
   Button,
 } from "@mui/material";
-import Cookies from "js-cookie";
 import {
   TableContainer,
   Table,
@@ -28,20 +27,20 @@ import {
 
 function EmpReport() {
   const [taskData, setTaskData] = useState(null);
-  const [getemplst, setemplst] = useState(null);
-  const [taskstatus, setTaskstatus] = useState(null);
+  // const [getemplst, setemplst] = useState(null);
+  // const [taskstatus, setTaskstatus] = useState(null);
   const [selectedTask, setSelectedTask] = useState(0);
   const [getreports, setReports] = useState([]);
   const [getheader, setheader] = useState([]);
   const [sortOrder, setSortOrder] = useState('asc');
   const [sortBy, setSortBy] = useState(null);
   const [showPreviewModal, setShowPreviewModal] = useState(false);
-  const [previewFile,  setPreviewFile] = useState(null);
-  const [selectedEmployee, setSelectedEmployee] = useState(0);
-  const [selectedStatus, setSelectedStatus] = useState(0);
+  // const [previewFile,  setPreviewFile] = useState(null);
+  // const [selectedEmployee, setSelectedEmployee] = useState(0);
+  // const [selectedStatus, setSelectedStatus] = useState(0);
   const [getmodel, setmodel] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
-  const [selectedHeader, setSelectedHeader] = useState(null);
+  // const [selectedHeader, setSelectedHeader] = useState(null);
 
 
 
@@ -50,10 +49,10 @@ function EmpReport() {
       try {
         const response1 = await getFromAPI("/task_list");
         setTaskData(response1.task_lst);
-        const response2 = await getFromAPI("/emp_details_list");
-        setemplst(response2.emp_details_lst);
-        const response3 = await getFromAPI("/taskstatuslist");
-        setTaskstatus(response3.ts_lst);
+        // const response2 = await getFromAPI("/emp_details_list");
+        // setemplst(response2.emp_details_lst);
+        // const response3 = await getFromAPI("/taskstatuslist");
+        // setTaskstatus(response3.ts_lst);
         var data = {task_type: 0};
         const response = await getFromAPI("/employeereport?data=" + JSON.stringify(data));
         setReports(response.reports);
@@ -102,21 +101,21 @@ function EmpReport() {
 
  
 
-  const handleChangeEmployee = (event) => {
-    setSelectedEmployee(event.target.value);
-  };
+  // const handleChangeEmployee = (event) => {
+  //   setSelectedEmployee(event.target.value);
+  // };
 
   const handleChangeTask = (event) => {
     setSelectedTask(event.target.value);
   };
 
-  const handleChangeStatus = (event) => {
-    setSelectedStatus(event.target.value);
-  };
+  // const handleChangeStatus = (event) => {
+  //   setSelectedStatus(event.target.value);
+  // };
 
   const handleDocumentClick = (row, header) => {
     setSelectedRow(row);
-    setSelectedHeader(header);
+    // setSelectedHeader(header);
     if (getmodel) {
       setmodel(false);
     } else {
@@ -124,30 +123,30 @@ function EmpReport() {
     }
   };
 
-  const renderPreview = () => {
-    if (previewFile && previewFile.startsWith("data:image")) {
-      return (
-        <img
-          src={`${previewFile}`}
-          alt="Preview"
-          style={{ maxWidth: "100%", height: "auto" }}
-        />
-      );
-    } else if (previewFile && previewFile.startsWith("data:application/pdf")) {
-      return (
-        <iframe
-          src={`${previewFile}`}
-          type="application/pdf"
-          width="100%"
-          height="auto"
-          style={{ border: "none" }}
-          title="Preview PDF"
-        ></iframe>
-      );
-    } else {
-      return <p>No preview available</p>;
-    }
-  };
+  // const renderPreview = () => {
+  //   if (previewFile && previewFile.startsWith("data:image")) {
+  //     return (
+  //       <img
+  //         src={`${previewFile}`}
+  //         alt="Preview"
+  //         style={{ maxWidth: "100%", height: "auto" }}
+  //       />
+  //     );
+  //   } else if (previewFile && previewFile.startsWith("data:application/pdf")) {
+  //     return (
+  //       <iframe
+  //         src={`${previewFile}`}
+  //         type="application/pdf"
+  //         width="100%"
+  //         height="auto"
+  //         style={{ border: "none" }}
+  //         title="Preview PDF"
+  //       ></iframe>
+  //     );
+  //   } else {
+  //     return <p>No preview available</p>;
+  //   }
+  // };
  
   return (
     <>

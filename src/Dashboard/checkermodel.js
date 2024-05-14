@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Modal, Form, Alert } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,12 +12,8 @@ import PdftoIMG from '../Dashboard/pdftoimg'
 
 const Checkermodel = ({ row, onRefresh }) => {
   const [showModal, setShowModal] = useState(true);
-  const [showPreviewModal, setShowPreviewModal] = useState(false);
-  const [formData, setFormData] = useState({});
-  const [errorMessage, setErrorMessage] = useState("");
   const [previewFile, setPreviewFile] = useState(null);
   const handleCloseModal = () => setShowModal(false);
-  const handleClosePreviewModal = () => setShowPreviewModal(false);
   const [filetype, setfiletype] = useState('');
   
 
@@ -28,7 +24,6 @@ const Checkermodel = ({ row, onRefresh }) => {
             const response = await getFromAPI("/get_reportfile?data=" + JSON.stringify(data));
             setPreviewFile(response.encoded_string);
             setfiletype(response.type)
-            setShowPreviewModal(true);
         } catch (error) {
           console.error("Error fetching task data:", error);
         } finally {
@@ -101,7 +96,6 @@ const Checkermodel = ({ row, onRefresh }) => {
         <Modal.Header closeButton style={{color: 'gray', fontWeight: '400', fontSize: 20}}>
         Assigner Remarks :  {row["Assigner Remarks"]}
         </Modal.Header>
-        {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
         <Modal.Body>
         <h6 style={{color: 'gray', fontWeight: '400'}}>Assignee Remarks : {row["Assignee Remarks"]}</h6>
           <Grid container spacing={2}>

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import { getFromAPI, postToAPI } from "../apiCall/ApiCall.js";
+import { getFromAPI} from "../apiCall/ApiCall.js";
 
 function Showadmindash() {
   const [getCount, setCount] = useState([

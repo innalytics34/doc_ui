@@ -2,7 +2,6 @@ import React from "react";
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
 import { Tooltip } from "@material-ui/core";
-import Button from "@mui/material/Button";
 import excelicon from '../Dashboard/excel.png'
 
 const ExportExcel = ({ excelData, fileName }) => {

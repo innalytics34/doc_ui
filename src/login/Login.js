@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
 import { getFromAPI, postToAPI } from "../apiCall/ApiCall.js";
 import { Container, Paper, Alert, Stack } from "@mui/material";
 import Button from "@mui/material/Button";
@@ -12,31 +11,31 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
-  const [branchOptions, setBranchOptions] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
+  // const [branchOptions, setBranchOptions] = useState([]);
+  // const [selectedUser, setSelectedUser] = useState(null);
   const [username, setusername] = useState("");
   const [password, setPassword] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const navigate = useNavigate();
-  useEffect(() => {
-    async function fetchBranchOptions() {
-      try {
-        const response = await getFromAPI("/branch_list");
+  // useEffect(() => {
+  //   async function fetchBranchOptions() {
+  //     try {
+  //       const response = await getFromAPI("/branch_list");
 
-        setBranchOptions(
-          response.branch_lst.map((branch) => ({
-            label: branch.master_branch_name,
-            branch_fk: branch.master_branch_pk,
-          }))
-        );
+  //       setBranchOptions(
+  //         response.branch_lst.map((branch) => ({
+  //           label: branch.master_branch_name,
+  //           branch_fk: branch.master_branch_pk,
+  //         }))
+  //       );
 
-      } catch (error) {
-        console.error("Error fetching user options:", error);
-      }
-    }
+  //     } catch (error) {
+  //       console.error("Error fetching user options:", error);
+  //     }
+  //   }
 
-    fetchBranchOptions();
-  }, []);
+  //   fetchBranchOptions();
+  // }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

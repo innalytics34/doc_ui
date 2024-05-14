@@ -1,7 +1,6 @@
 import { getFromAPI } from "../apiCall/ApiCall.js";
 import React, { useState, useEffect } from "react";
 import SearchIcon from '@mui/icons-material/Search';
-import {Modal} from "react-bootstrap";
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import Assigntask from '../Dashboard/assigntask.js';
@@ -14,7 +13,6 @@ import {
   Select,
   Button,
 } from "@mui/material";
-import Cookies from "js-cookie";
 import {
   TableContainer,
   Table,
@@ -28,28 +26,28 @@ import {
 
 function TaskData() {
   const [taskData, setTaskData] = useState([]);
-  const [getemplst, setemplst] = useState(null);
+  // const [getemplst, setemplst] = useState(null);
   const [taskstatus, setTaskstatus] = useState(null);
   const [selectedTask, setSelectedTask] = useState(0);
   const [getreports, setReports] = useState([]);
   const [getheader, setheader] = useState([]);
   const [sortOrder, setSortOrder] = useState('asc');
   const [sortBy, setSortBy] = useState(null);
-  const [showPreviewModal, setShowPreviewModal] = useState(false);
-  const [previewFile,  setPreviewFile] = useState(null);
-  const [selectedEmployee, setSelectedEmployee] = useState(0);
+  // const [showPreviewModal, setShowPreviewModal] = useState(false);
+  // const [previewFile,  setPreviewFile] = useState(null);
+  // const [selectedEmployee, setSelectedEmployee] = useState(0);
   const [selectedStatus, setSelectedStatus] = useState(0);
   const [getmodel, setmodel] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
-  const [selectedHeader, setSelectedHeader] = useState(null);
+  // const [selectedHeader, setSelectedHeader] = useState(null);
   const [rejectedTaskCount, setRejectedTaskCount] = useState(0);
 
   async function fetchTaskData() {
     try {
       const response1 = await getFromAPI("/task_list");
       setTaskData(response1.task_lst);
-      const response2 = await getFromAPI("/emp_details_list");
-      setemplst(response2.emp_details_lst);
+      // const response2 = await getFromAPI("/emp_details_list");
+      // setemplst(response2.emp_details_lst);
       const response3 = await getFromAPI("/taskstatuslist");
       setTaskstatus(response3.ts_lst);
       const data = {task_type: 0, taskstatus: 0};
@@ -99,11 +97,11 @@ function TaskData() {
     }
   });
 
-  const handleClosePreviewModal = () => setShowPreviewModal(false);
+  // const handleClosePreviewModal = () => setShowPreviewModal(false);
 
-  const handleChangeEmployee = (event) => {
-    setSelectedEmployee(event.target.value);
-  };
+  // const handleChangeEmployee = (event) => {
+  //   setSelectedEmployee(event.target.value);
+  // };
 
   const handleChangeTask = (event) => {
     setSelectedTask(event.target.value);
@@ -115,7 +113,7 @@ function TaskData() {
 
   const handleDocumentClick = (row, header) => {
     setSelectedRow(row);
-    setSelectedHeader(header);
+    // setSelectedHeader(header);
     if (getmodel) {
       setmodel(false);
     } else {

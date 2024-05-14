@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Button, Modal, Form, Alert } from "react-bootstrap";
+import {Modal, Alert } from "react-bootstrap";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Grid from "@mui/material/Grid";
-import Swal from "sweetalert2";
-import { postToAPI, getFromAPI } from "../apiCall/ApiCall.js";
+import {getFromAPI } from "../apiCall/ApiCall.js";
 import PdftoIMG from '../Dashboard/pdftoimg'
 
 const AdminRpModel = ({ row, onRefresh }) => {
   const [showModal, setShowModal] = useState(true);
-  const [showPreviewModal, setShowPreviewModal] = useState(false);
-  const [formData, setFormData] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [previewFile, setPreviewFile] = useState(null);
   const handleCloseModal = () => setShowModal(false);
-  const handleClosePreviewModal = () => setShowPreviewModal(false);
   const [filetype, setfiletype] = useState(0);
   
 
@@ -28,7 +24,6 @@ const AdminRpModel = ({ row, onRefresh }) => {
             const response = await getFromAPI("/get_reportfile?data=" + JSON.stringify(data));
             setPreviewFile(response.encoded_string);
             setfiletype(response.type)
-            setShowPreviewModal(true);
         } catch (error) {
           console.error("Error fetching task data:", error);
         } finally {
