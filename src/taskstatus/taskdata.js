@@ -1,5 +1,5 @@
 import { getFromAPI } from "../apiCall/ApiCall.js";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback  } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
@@ -43,37 +43,32 @@ function TaskData() {
   const [rejectedTaskCount, setRejectedTaskCount] = useState(0);
 
 
-
-  
+  const fetchTaskData = useCallback(async () => {
+    try {
+      const response1 = await getFromAPI("/task_list");
+      setTaskData(response1.task_lst);
+      // const response2 = await getFromAPI("/emp_details_list");
+      // setemplst(response2.emp_details_lst);
+      const response3 = await getFromAPI("/taskstatuslist");
+      setTaskstatus(response3.ts_lst);
+      const data = { task_type: 0, taskstatus: 0 };
+      const response = await getFromAPI("/get_taskdata?data=" + JSON.stringify(data));
+      setReports(response.reports);
+      setheader(response.header);
+      const rejectedTaskResponse = await getFromAPI("/get_taskdata?data=" + JSON.stringify({ task_type: selectedTask, taskstatus: 5 }));
+      setRejectedTaskCount(rejectedTaskResponse.reports.length);
+    } catch (error) {
+      console.error("Error fetching task data:", error);
+    }
+  }, [selectedTask]);
 
   useEffect(() => {
-    async function fetchTaskData() {
-      try {
-        const response1 = await getFromAPI("/task_list");
-        setTaskData(response1.task_lst);
-        // const response2 = await getFromAPI("/emp_details_list");
-        // setemplst(response2.emp_details_lst);
-        const response3 = await getFromAPI("/taskstatuslist");
-        setTaskstatus(response3.ts_lst);
-        const data = {task_type: 0, taskstatus: 0};
-        const response = await getFromAPI("/get_taskdata?data=" + JSON.stringify(data));
-  
-        setReports(response.reports);
-        setheader(response.header);
-        const rejectedTaskResponse = await getFromAPI("/get_taskdata?data=" + JSON.stringify({task_type: selectedTask, taskstatus: 5}));
-        setRejectedTaskCount(rejectedTaskResponse.reports.length);
-      } catch (error) {
-        console.error("Error fetching task data:", error);
-      }
-    }
-   
-  }, [handleRefresh()]);
+    fetchTaskData();
+  }, [fetchTaskData]);
 
-  
-
-  // const handleRefresh = () => {
-  //   fetchTaskData();
-  // };
+  const handleRefresh = () => {
+    fetchTaskData();
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
