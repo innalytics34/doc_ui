@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Modal, Alert } from "react-bootstrap";
+import {Modal} from "react-bootstrap";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -11,7 +11,6 @@ import PdftoIMG from '../Dashboard/pdftoimg'
 
 const AdminRpModel = ({ row, onRefresh }) => {
   const [showModal, setShowModal] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("");
   const [previewFile, setPreviewFile] = useState(null);
   const handleCloseModal = () => setShowModal(false);
   const [filetype, setfiletype] = useState(0);
@@ -46,7 +45,6 @@ const AdminRpModel = ({ row, onRefresh }) => {
         <Modal.Header closeButton style={{color: 'gray', fontWeight: '400', fontSize: 20}}>
         Assigner Remarks :  {row["Assigner Remarks"]}
         </Modal.Header>
-        {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
         <Modal.Body>
         <h6 style={{color: 'gray', fontWeight: '400'}}>Assignee Remarks : {row["Assignee Remarks"]}</h6>
           <Grid container spacing={2}>

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import {Modal,Alert } from "react-bootstrap";
+import {Modal } from "react-bootstrap";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Grid from "@mui/material/Grid";
-import Swal from "sweetalert2";
-import { postToAPI, getFromAPI } from "../apiCall/ApiCall.js";
+import {getFromAPI } from "../apiCall/ApiCall.js";
 import PdftoIMG from '../Dashboard/pdftoimg';
 
-const ReportModel = ({ row, onRefresh }) => {
+const ReportModel = ({ row}) => {
   const [showModal, setShowModal] = useState(true);
   const [previewFile, setPreviewFile] = useState(null);
   const handleCloseModal = () => setShowModal(false);

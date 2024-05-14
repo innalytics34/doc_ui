@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
-import { getFromAPI, postToAPI } from "../apiCall/ApiCall.js";
+import {postToAPI} from "../apiCall/ApiCall.js";
 import { Container, Paper, Alert, Stack } from "@mui/material";
 import Button from "@mui/material/Button";
 import {

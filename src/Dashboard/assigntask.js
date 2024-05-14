@@ -29,7 +29,7 @@ const Assigntask = ({ row, onRefresh }) => {
     };
     if (formData) {
       try {
-        const response = await postToAPI("/doc_upload", file_data);
+        const response = await ("/doc_upload", file_data);
         Swal.fire({
           icon: "success",
           title: "Success",
