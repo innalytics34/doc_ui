@@ -32,6 +32,8 @@ jobs:
         with:
           name: node-app
           path: release.zip
+        env:
+          DEBUG: true   
 
   deploy:
     runs-on: ubuntu-latest
