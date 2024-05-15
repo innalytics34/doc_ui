@@ -38,4 +38,4 @@ jobs:
         with:
           app-name: 'doccollect'
           slot-name: 'Production'
-          package: .
+          package: build/
