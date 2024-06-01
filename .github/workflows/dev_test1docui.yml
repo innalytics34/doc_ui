@@ -24,11 +24,6 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          cd client
-          npm install
-          npm run build --if-present
-          npm run test --if-present
-          cd ..
           npm run build --if-present
           npm run test --if-present
 
@@ -73,4 +68,3 @@ jobs:
           app-name: 'test1docui'
           slot-name: 'Production'
           package: .
-          
