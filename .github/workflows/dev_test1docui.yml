@@ -21,14 +21,19 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: npm install, build, and test
+      - name: Install npm packages in root and client directories, build, and test
         run: |
           npm install
+          cd client
+          npm install
+          npm run build --if-present
+          npm run test --if-present
+          cd ..
           npm run build --if-present
           npm run test --if-present
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip -r release.zip ./*
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -68,4 +73,3 @@ jobs:
           app-name: 'test1docui'
           slot-name: 'Production'
           package: .
-          
