@@ -20,7 +20,7 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: npm install 
+        run: npm install --force
 
       # Uncomment the next step to run tests
       # - name: Run tests
