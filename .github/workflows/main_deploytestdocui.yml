@@ -59,14 +59,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_ED4BD92A9B4A4DDCAE1F98EAC2500446 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C33E042DAC3543F2A9A9A37140837836 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_81361C2A02B246EBB41EE615F04B4226 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_34E2F246C22F4178A1F616FA0C1B6DF9 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A135A5D22DC249DD9111295F20F6EF98 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_12CDCB824B5D456AAE949F37E1CDE3EF }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'deploytestdocui'
+          app-name: 'doccollecttest'
           slot-name: 'Production'
           package: .
