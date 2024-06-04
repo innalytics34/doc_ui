@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import LoginForm from "./login/Login";
 import Dashboard from "./Dashboard/Dashboard";
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
 
 const App = () => {
-  // const isLogin = Cookies.get('Islogin') === 'true';
-  const isLogin = 'true';
+  const isLogin = Cookies.get('Islogin') === 'true';
+  // const isLogin = 'true';
   useEffect(() => {
     const handleContextMenu = (event) => {
       event.preventDefault(); 
