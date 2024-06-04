@@ -1,17 +1,12 @@
-import React, {useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import LoginForm from "./login/Login";
 import Dashboard from "./Dashboard/Dashboard";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 const App = () => {
-  const Islogin = Cookies.get('Islogin');
-
+  // const isLogin = Cookies.get('Islogin') === 'true';
+  const isLogin = 'true';
   useEffect(() => {
     const handleContextMenu = (event) => {
       event.preventDefault(); 
@@ -27,9 +22,9 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginForm />} />
-        {Islogin === 'true' && <Route path="/Dashboard" element={<Dashboard />} />}
-        <Route path="/" element={<Navigate to="/" />} />
+        <Route path="/" element={isLogin ? <Navigate to="/dashboard" /> : <LoginForm />} />
+        <Route path="/dashboard" element={isLogin ? <Dashboard /> : <Navigate to="/" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );
