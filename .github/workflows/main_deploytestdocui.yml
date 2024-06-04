@@ -67,6 +67,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'doccollecttest'
+          app-name: 'deploytestdocui'
           slot-name: 'Production'
           package: .
