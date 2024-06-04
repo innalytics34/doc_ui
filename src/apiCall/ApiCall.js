@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const API_BASE_URL = "http://127.0.0.1:805/IEC";
+const API_BASE_URL = "https://doccollectapi.azurewebsites.net/IEC";
 const jwtToken = Cookies.get("token");
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
